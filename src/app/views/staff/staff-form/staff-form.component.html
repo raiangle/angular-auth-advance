@@ -1,0 +1,74 @@
+<form class="row mb-4" [formGroup]="userForm" novalidate (ngSubmit)="saveUser()" autocomplete="off"
+      enctype="multipart/form-data">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header">
+        <h4>{{id ? 'Edit' : 'Add'}} {{role_name === 'staff' ? 'Staff' : 'PetOwner'}}</h4>
+      </div>
+      <div class="card-body">
+        <div class="row">
+          <app-form-input-text class="col-md-6" [label]="'First Name'"
+                               [control]="userForm.get('first_name')"
+                               [validationMessage]="'First Name is required'">
+          </app-form-input-text>
+
+          <app-form-input-text class="col-md-6" [label]="'Last Name'"
+                               [control]="userForm.get('last_name')"
+                               [validationMessage]="'Last Name is required'">
+          </app-form-input-text>
+
+          <app-form-input-text class="col-md-6" [label]="'Email'"
+                               [control]="userForm.get('email')"
+                               [validationMessage]="'Email is required'">
+          </app-form-input-text>
+
+          <app-form-input-text class="col-md-6" [label]="'Mobile'"
+                               [control]="userForm.get('mobile')"
+                               [validationMessage]="'Mobile is required'">
+          </app-form-input-text>
+
+<!--          <app-form-input-password *ngIf="!id" class="col-md-6" [label]="'Password'"-->
+<!--                                   [control]="userForm.get('password')"-->
+<!--                                   [validationMessage]="'Password is required'">-->
+<!--          </app-form-input-password>-->
+
+          <app-form-input-textarea *ngIf="role_name === 'PetOwner'" class="col-md-12" [label]="'Address'"
+                                   [validationMessage]="'address is required'"
+                                   [control]="userForm.get('user_address')">
+          </app-form-input-textarea>
+<!--          <div class="col-md-6">-->
+<!--            <label>Role</label>-->
+<!--            <ng-select [searchable]="true"-->
+<!--                       [items]="rolesList"-->
+<!--                       [bindLabel]="'name'"-->
+<!--                       [bindValue]="'name'"-->
+<!--                       (change)="hideAgency($event)"-->
+<!--                       [formControl]="userForm.get('role_name')">-->
+<!--            </ng-select>-->
+<!--            <div class="invalid-feedback">Role is required</div>-->
+<!--          </div>-->
+          <div class="col-md-6" *ngIf="showAgency">
+            <label>Agency</label>
+            <ng-select [searchable]="true"
+                       [items]="agencyList"
+                       [bindLabel]="'name'"
+                       [bindValue]="'id'"
+                       [formControl]="userForm.get('agency_id')">
+            </ng-select>
+            <div class="invalid-feedback">Agency is required</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-12">
+    <div>
+      <button class="btn btn-primary" type="submit">
+        {{ id ? 'Update' : 'Add'}}
+      </button>&nbsp;
+      <button class="btn btn-danger" (click)="cancel()">
+        Cancel
+      </button>
+    </div>
+  </div>
+</form>

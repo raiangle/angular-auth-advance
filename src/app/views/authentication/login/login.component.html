@@ -1,0 +1,53 @@
+<div class="app-body animated fadeIn">
+  <main class="main d-flex align-items-center">
+    <div class="container">
+      <div class="row mt-4">
+        <div class="col-md-6 mx-auto">
+          <div class="card-group">
+            <div class="card p-4">
+              <div>
+                <img src="../../../../assets/kennellogo_m.png" width="200">
+              </div>
+              <div class="card-body custom-login">
+                <form [formGroup]="loginForm" (ngSubmit)="onLoginFormSubmit()">
+                  <p class="text-muted">Sign In to your account</p>
+                  <div class="form-group input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">
+                        <i class="icon-user"></i>
+                      </span>
+                    </div>
+                    <input type="email" formControlName="email" class="form-control" [ngClass]="(loginForm.get('email').touched && loginForm.get('email').invalid)?'is-invalid':''"
+                      placeholder="Email Address">
+                    <div class="invalid-feedback" *ngIf="loginForm.get('email').touched && loginForm.get('email').invalid">
+                      Valid email required
+                    </div>
+                  </div>
+                  <div class="input-group mb-4">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">
+                        <i class="icon-lock"></i>
+                      </span>
+                    </div>
+                    <input type="password" formControlName="password" [ngClass]="(loginForm.get('password').touched && loginForm.get('password').invalid)?'is-invalid':''"
+                      class="form-control" placeholder="Password">
+                    <div class="invalid-feedback" *ngIf="loginForm.get('password').touched && loginForm.get('password').invalid">
+                      Password required
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-6">
+                      <button type="submit" class="btn btn-primary px-4 login-btn" [disabled]="!loginForm.valid">Login</button>
+                    </div>
+                    <a routerLink="/forget">Forgot Password ?</a>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>

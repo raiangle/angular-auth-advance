@@ -1,0 +1,46 @@
+<form class="row mb-4" [formGroup]="userForm" novalidate  autocomplete="off"
+      enctype="multipart/form-data">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header">
+        <h4>{{id ? 'Edit' : 'Add'}} Detail</h4>
+      </div>
+      <div class="card-body">
+        <div class="row">
+          <app-form-input-text class="col-md-6" [label]="'First Name'"
+                               [control]="userForm.get('first_name')"
+                               [validationMessage]="'First Name is required'">
+          </app-form-input-text>
+
+          <app-form-input-text class="col-md-6" [label]="'Last Name'"
+                               [control]="userForm.get('last_name')"
+                               [validationMessage]="'Last Name is required'">
+          </app-form-input-text>
+
+          <app-form-input-text class="col-md-6" [label]="'Email'"
+                               [control]="userForm.get('email')"
+                               [validationMessage]="'Email is required'">
+          </app-form-input-text>
+
+          <app-form-input-text class="col-md-6" [label]="'Mobile'"
+                               [control]="userForm.get('mobile')"
+                               [validationMessage]="'Mobile is required'">
+          </app-form-input-text>
+
+          <app-form-input-password *ngIf="!id" class="col-md-6" [label]="'Password'"
+                                   [control]="userForm.get('password')"
+                                   [validationMessage]="'Password is required'">
+          </app-form-input-password>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-12">
+    <div>&nbsp;
+      <button class="btn btn-danger" (click)="cancel()">
+        Back
+      </button>
+    </div>
+  </div>
+</form>

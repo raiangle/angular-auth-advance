@@ -1,0 +1,46 @@
+<div class="app flex-row align-items-center ">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-5">
+        <div class="card-group">
+          <div class="card p-5" style="background-color: #ffffffcc;border-radius: 5px;">
+            <div class="card-body">
+              <form class="row mb-4" [formGroup]="userForm" novalidate (ngSubmit)="saveUser()" autocomplete="off"
+                    enctype="multipart/form-data">
+                <div class="col-12">
+                  <div class="card">
+                    <div class="card-header">
+                      <h4>Forgot Password</h4>
+                    </div>
+                    <div class="card-body">
+                      <div class="row">
+
+
+                        <app-form-input-text class="col-md-12" [label]="'Email'"
+                                             [control]="userForm.get('email')"
+                                             [validationMessage]="'Email is required'">
+                        </app-form-input-text>
+
+
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-12">
+                  <div>
+                    <button class="btn btn-primary" type="submit">
+                      {{ id ? 'Update' : 'Submit'}}
+                    </button>&nbsp;
+                    <button class="btn btn-danger" (click)="cancel()">
+                      Cancel
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

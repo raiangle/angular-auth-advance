@@ -1,0 +1,39 @@
+<div class="animated fadeIn">
+  <div class="clearfix">
+    <button class="float-right btn btn-primary mb-2" routerLink="./add" type="button">Add</button>
+  </div>
+  <div class="card">
+    <div class="card-body">
+      <table datatable [dtOptions]="dtOptions" class="table table-hover w-100">
+        <thead>
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th *ngIf="localUser['roles'][0]['name'] === 'Admin'">Agency Name</th>
+          <th>Action</th>
+        </tr>
+        </thead>
+        <tbody *ngIf="users?.length != 0">
+        <tr *ngFor="let person of users">
+          <td routerLink="./edit/{{person.id}}" style="cursor:pointer;">{{ person.first_name }} {{ person.last_name }}</td>
+          <td>{{ person.email }}</td>
+          <td *ngIf="localUser['roles'][0]['name'] === 'Admin'" [innerHtml]="person.agency.name"></td>
+          <td>
+<!--            <button class="btn btn-sm btn-primary" routerLink="/staff/view/{{person.id}}" type="button">View</button>-->
+            <button class="btn btn-sm btn-primary" routerLink="./edit/{{person.id}}" type="button">Edit</button>
+<!--            <button class="btn btn-sm btn-primary" routerLink="/staff/reset/{{person.id}}" type="button">Reset Pw</button>-->
+          </td>
+        </tr>
+        </tbody>
+        <tbody *ngIf="users?.length == 0">
+        <tr *ngIf="localUser['roles'][0]['name'] === 'Admin'">
+          <td colspan="3" class="no-data-available">No data!</td>
+        </tr>
+        <tr *ngIf="localUser['roles'][0]['name'] !== 'Admin'">
+          <td colspan="2" class="no-data-available">No data!</td>
+        </tr>
+        <tbody>
+      </table>
+    </div>
+  </div>
+</div>

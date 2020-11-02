@@ -1,0 +1,34 @@
+<div class="animated fadeIn">
+  <form class="card" [formGroup]="userForm" novalidate (ngSubmit)="addPw()" autocomplete="off">
+    <div class="card-body">
+
+      <div class="row">
+
+        <app-form-input-text class="col-md-12" [label]="'Email'"
+                             [control]="userForm.get('email')"
+                             [validationMessage]="'Email is required'">
+        </app-form-input-text>
+
+        <app-form-input-password class="col-md-12" [label]="'Password'"
+                                 [control]="userForm.get('password')"
+                                 [validationMessage]="'Password is required'">
+        </app-form-input-password>
+
+        <app-form-input-password class="col-md-12" [label]="'Confirm Password'"
+                                 [control]="userForm.get('confirm_password')"
+                                 [validationMessage]="'Confirm Password is required'">
+        </app-form-input-password>
+
+
+        <div class="col-12">
+          <button class="btn btn-primary" type="submit">
+            {{id ? 'Save' : 'Create'}}
+          </button>&nbsp;
+          <button class="btn btn-danger" (click)="cancel()">
+            Cancel
+          </button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
